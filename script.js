@@ -246,6 +246,7 @@ async function initializeVisitorCounter() {
             const val = Number(data.value ?? data.count ?? data.total);
             if (Number.isFinite(val)) {
                 finalVisitorCount = val;
+                if (visitorCount) visitorCount.textContent = String(finalVisitorCount);
                 return;
             }
             throw new Error('invalid response');
@@ -254,6 +255,7 @@ async function initializeVisitorCounter() {
             total += 1;
             localStorage.setItem('totalVisitorCount', String(total));
             finalVisitorCount = total;
+            if (visitorCount) visitorCount.textContent = String(finalVisitorCount);
         }
     }
     initializeVisitorCounter();
