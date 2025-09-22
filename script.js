@@ -394,9 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     profileBlock.addEventListener('mousemove', (e) => handleTilt(e, profileBlock));
     profileBlock.addEventListener('touchmove', (e) => { e.preventDefault(); handleTilt(e, profileBlock); });
-    profileBlock.addEventListener('mouseleave', () => { gsap.to(profileBlock, { rotationX: 0, rotationY: 0, duration: 0.5, ease: 'power2.out' }); });
-    profileBlock.addEventListener('touchend', () => { gsap.to(profileBlock, { rotationX: 0, rotationY: 0, duration: 0.5, ease: 'power2.out' }); });
-    profilePicture.addEventListener('mouseenter', () => { glitchOverlay.style.opacity = '1'; setTimeout(() => { glitchOverlay.style.opacity = '0'; }, 500); });
+    profileBlock.addEventListener('mouseleave', () => { gsap.to(profileBlock, { rotationX: 0, rotationY: 0, duration: 0.35, ease: 'power2.out' }); });
+    profileBlock.addEventListener('touchend', () => { gsap.to(profileBlock, { rotationX: 0, rotationY: 0, duration: 0.35, ease: 'power2.out' }); });
+    
 
     function formatTime(ms) {
         if (isNaN(ms) || ms < 0) return '00:00';
