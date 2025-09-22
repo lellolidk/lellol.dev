@@ -235,11 +235,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function initializeVisitorCounter() {
-        let total = parseInt(localStorage.getItem('totalVisitorCount') || '0', 10);
-        total += 1;
-        localStorage.setItem('totalVisitorCount', String(total));
-        finalVisitorCount = total;
+    async function initializeVisitorCounter() {
+        try {
+            const ns = 'kanake-lellol';
+            const key = 'global_views';
+            const res = await fetch(`https://api.countapi.xyz/hit/${ns}/${key}`, { cache: 'no-store' });
+            if (!res.ok) throw new Error('countapi failed');
+            const data = await res.json();
+            finalVisitorCount = Number(data.value) || 0;
+        } catch (e) {
+            let total = parseInt(localStorage.getItem('totalVisitorCount') || '0', 10);
+            total += 1;
+            localStorage.setItem('totalVisitorCount', String(total));
+            finalVisitorCount = total;
+        }
     }
     initializeVisitorCounter();
 
